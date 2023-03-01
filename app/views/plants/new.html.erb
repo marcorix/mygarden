@@ -1,0 +1,7 @@
+<h1>Plants#new</h1>
+<%= simple_form_for(@plant) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.input :size, collection: %w(small medium large) %>
+  <%= f.submit 'Add PLant', class: "btn btn-primary" %>
+<% end %>
