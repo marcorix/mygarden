@@ -13,6 +13,7 @@ class PlantsController < ApplicationController
 
   def show
     @plant = Plant.find(params[:id])
+    @booking = Booking.new
   end
 
   def new

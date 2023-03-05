@@ -14,15 +14,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_01_091237) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "bookmarks", force: :cascade do |t|
+  create_table "bookings", force: :cascade do |t|
     t.date "start_date"
     t.date "end_date"
     t.bigint "plant_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["plant_id"], name: "index_bookmarks_on_plant_id"
-    t.index ["user_id"], name: "index_bookmarks_on_user_id"
+    t.index ["plant_id"], name: "index_bookings_on_plant_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "plants", force: :cascade do |t|
@@ -49,7 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_01_091237) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "bookmarks", "plants"
-  add_foreign_key "bookmarks", "users"
+  add_foreign_key "bookings", "plants"
+  add_foreign_key "bookings", "users"
   add_foreign_key "plants", "users"
 end
