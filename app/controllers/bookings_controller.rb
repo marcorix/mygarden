@@ -15,6 +15,10 @@ class BookingsController < ApplicationController
     end
   end
 
+  def update
+    @booking = Booking.find(params[:id])
+  end
+
   private
 
   def strong_params

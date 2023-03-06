@@ -1,0 +1,9 @@
+<div class="container">
+  <ul>
+    <% current_user.bookings.each do |booking| %>
+      <li>
+        <p><%= link_to booking.plant.name, booking_path(booking) %> from: <%= booking.start_date %> to: <%= booking.end_date %></p>
+      </li>
+    <% end %>
+  </ul>
+</div>
