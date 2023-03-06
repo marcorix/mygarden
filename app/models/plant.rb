@@ -1,5 +1,6 @@
 class Plant < ApplicationRecord
   belongs_to :user
+  has_many :bookings
   validates :size, inclusion: { in: %w(small medium large),
     message: "%{value} is not a valid size" }
 

@@ -1,9 +1,27 @@
 <div class="container">
   <ul>
-    <% current_user.bookings.each do |booking| %>
-      <li>
-        <p><%= link_to booking.plant.name, booking_path(booking) %> from: <%= booking.start_date %> to: <%= booking.end_date %></p>
-      </li>
+    <% current_user.plants.each do |plant| %>
+      <% plant.bookings.each do |booking| %>
+        <li>
+          <p><%= link_to booking.plant.name, booking_path(booking) %> from: <%= booking.start_date %> to: <%= booking.end_date %> Requested by: <%= booking.user.email %></p>
+          <div class="d-flex">
+            <% if booking.pending? %>
+              <!-- Display Forms-->
+              <%= simple_form_for booking do |f| %>
+                <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
+                <%= f.submit 'Accept', class: 'btn btn-info' %>
+              <% end %>
+              <%= simple_form_for booking do |f| %>
+                <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
+                <%= f.submit 'Reject', class: 'btn btn-light' %>
+              <% end %>
+            <% else %>
+              <!-- Display Status-->
+              <p class='booking-tag'><%= booking.status %></p>
+            <% end %>
+          </div>
+        </li>
+        <% end %>
     <% end %>
   </ul>
 </div>

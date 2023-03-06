@@ -17,11 +17,16 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find(params[:id])
+    if @booking.update(strong_params)
+      redirect_to dashboard_path(@booking)
+    else
+      render 'dashboard', status: :unprocessable_entity
+    end
   end
 
   private
 
   def strong_params
-    params.require(:booking).permit(:start_date, :end_date)
+    params.require(:booking).permit(:start_date, :end_date, :status)
   end
 end
