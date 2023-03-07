@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  root to: "pages#home"
+  root to: "plants#index"
   get 'dashboard', to: 'pages#dashboard'
 
 

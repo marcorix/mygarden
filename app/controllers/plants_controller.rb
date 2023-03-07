@@ -1,6 +1,10 @@
 class PlantsController < ApplicationController
   def index
-    @plants = Plant.all
+    if params[:query].present?
+      @plants = Plant.search_by_title(params[:query])
+    else
+      @plants = Plant.all
+    end
 
     @markers = @plants.geocoded.map do |plant|
       {
