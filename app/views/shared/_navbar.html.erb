@@ -13,8 +13,13 @@
         <% if user_signed_in? %>
           <li class="nav-item active">
             <%= link_to "Plants", plants_path, class: "nav-link" %>
-            <%= link_to current_user.email,class: "nav-link" %>
           </li>
+          <link class="nav-item active">
+            <%= link_to "Add a Plant", new_plant_path, class: "nav-link" %>
+          </link>
+          <link class="nav-item active">
+            <%= link_to current_user.email,class: "nav-link" %>
+          </link>
           <li class="nav-item dropdown">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

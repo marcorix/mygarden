@@ -3,5 +3,6 @@
   <%= f.input :name %>
   <%= f.input :address %>
   <%= f.input :size, collection: %w(small medium large) %>
+  <%= f.input :image, as: :file %>
   <%= f.submit 'Add PLant', class: "btn btn-primary" %>
 <% end %>

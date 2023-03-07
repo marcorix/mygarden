@@ -1,12 +1,17 @@
+<h1><%= @plant.name %></h1>
 <div class="container">
-  <h1><%= @plant.name %></h1>
-  <p>📍<%= @plant.address %></p>
-  <p>Size: <%= @plant.size %></p>
-  <hr>
-  <%= simple_form_for([@plant, @booking]) do |f| %>
-    <%= f.input :start_date, as: :date %>
-    <%= f.input :end_date, as: :date %>
-    <%= f.submit 'Book this Plant', class: "btn-flat btn-flat:hover" %>
-  <% end %>
+  <div class="d-flex">
+    <div class="me-5">
+      <%= cl_image_tag @plant.image.key, height: 300 %>
+      <p>📍<%= @plant.address %></p>
+      <p>Size: <%= @plant.size %></p>
+    </div>
+    <%= simple_form_for([@plant, @booking]) do |f| %>
+      <%= f.input :start_date, as: :date %>
+      <%= f.input :end_date, as: :date %>
+      <%= f.submit 'Book this Plant', class: "btn btn-success" %>
+    <% end %>
 
+  </div>
+  <hr>
 </div>

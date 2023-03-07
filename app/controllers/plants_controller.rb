@@ -37,6 +37,6 @@ class PlantsController < ApplicationController
   private
 
   def strong_params
-    params.require(:plant).permit(:name, :address, :size)
+    params.require(:plant).permit(:name, :address, :size, :image)
   end
 end
