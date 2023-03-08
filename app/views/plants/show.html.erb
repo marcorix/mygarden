@@ -2,6 +2,10 @@
 <div class="container">
   <div class="d-flex">
     <div class="me-5">
+      <%= simple_form_for [@plant, @favourite] do |f| %>
+        <%# <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
+        <%= f.submit 'Accept', class: 'btn btn-info' %>
+      <% end %>
       <%= cl_image_tag @plant.image.key, height: 300 %>
       <p>📍<%= @plant.address %></p>
       <p>Size: <%= @plant.size %></p>
