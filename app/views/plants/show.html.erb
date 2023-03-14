@@ -2,10 +2,23 @@
 <div class="container">
   <div class="d-flex">
     <div class="me-5">
-      <%= simple_form_for [@plant, @favourite] do |f| %>
+      <%#= simple_form_for [@plant, @favourite] do |f| %>
         <%# <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
-        <%= f.submit 'Accept', class: 'btn btn-info' %>
+        <%#= f.submit 'Accept', class: 'btn btn-info' %>
+      <%# end %>
+
+
+      <% if current_user.favorited?(@plant) %>
+        <%= link_to unfavorite_path do %>
+          <i class="fa-solid fa-heart"></i>
+        <% end %>
+      <% else %>
+        <%= link_to favorite_path do %>
+          <i class="fa-regular fa-heart"></i>
+        <% end %>
       <% end %>
+
+
       <%= cl_image_tag @plant.image.key, height: 300 %>
       <p>📍<%= @plant.address %></p>
       <p>Size: <%= @plant.size %></p>

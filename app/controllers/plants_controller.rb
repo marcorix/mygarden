@@ -18,7 +18,18 @@ class PlantsController < ApplicationController
   def show
     @plant = Plant.find(params[:id])
     @booking = Booking.new
-    @favourite = Favourite.new
+  end
+
+  def favorite
+    plant = Plant.find(params[:id])
+    current_user.favorite(plant)
+    redirect_to plant_path(plant)
+  end
+
+  def unfavorite
+    plant = Plant.find(params[:id])
+    current_user.unfavorite(plant)
+    redirect_to plant_path(plant)
   end
 
   def new

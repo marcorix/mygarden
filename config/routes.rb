@@ -5,12 +5,12 @@ Rails.application.routes.draw do
 
   resources :plants do
     resources :bookings, only: [:create]
-    resources :favourites, only: [:create]
   end
 
   resources :bookings, only: [:show, :update]
 
   get 'dashboard', to: 'pages#dashboard'
-
+  get 'plants/:id/favorite', to: 'plants#favorite', as: :favorite
+  get 'plants/:id/unfavorite', to: 'plants#unfavorite', as: :unfavorite
 
 end

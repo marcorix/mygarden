@@ -3,6 +3,8 @@ class Plant < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_one_attached :image
 
+  acts_as_favoritable
+
   validates :size, inclusion: { in: %w(small medium large),
     message: "%{value} is not a valid size" }
 
